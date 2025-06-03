@@ -80,7 +80,8 @@ LANGUAGE_MESSAGES = {
         "error": "Une erreur s'est produite. Pouvez-vous reformuler votre question ?",
         "fallback": "Je n'ai pas pu générer une réponse appropriée. Pouvez-vous reformuler votre question ?",
         "too_long": "Votre message est trop long. Pouvez-vous le raccourcir ?",
-        "timeout": "Le temps de réponse a été dépassé. Pouvez-vous reformuler votre question ?"
+        "timeout": "Le temps de réponse a été dépassé. Pouvez-vous reformuler votre question ?",
+        "uncertainty_note": "Note : Cette réponse est basée sur une interprétation qui pourrait nécessiter une vérification supplémentaire."
     },
     "en": {
         "greeting": "Hello! I'm your TeamWill financial assistant. How can I help you today?",
@@ -88,7 +89,8 @@ LANGUAGE_MESSAGES = {
         "error": "An error occurred. Could you please rephrase your question?",
         "fallback": "I couldn't generate an appropriate response. Could you please rephrase your question?",
         "too_long": "Your message is too long. Could you make it shorter?",
-        "timeout": "The response time was exceeded. Could you rephrase your question?"
+        "timeout": "The response time was exceeded. Could you rephrase your question?",
+        "uncertainty_note": "Note: This response is based on an interpretation that might require additional verification."
     }
 }
 
@@ -339,19 +341,32 @@ VERSION = "1.0.0"
 
 # Configuration de la validation des réponses
 VALIDATION_CONFIG = {
-    'min_confidence': 0.7,     # Seuil minimum de confiance
-    'max_length': 100,         # Longueur maximale en mots
-    'min_context_overlap': 3,  # Minimum de mots-clés du contexte
-    'banned_phrases': [        # Phrases à rejeter
-        "je pense que",
-        "peut-être",
-        "probablement",
-        "il me semble",
-        "il est possible",
-        "généralement",
-        "habituellement",
-        "en général",
-        "parfois",
-        "souvent"
-    ]
+    'min_confidence': 0.7,
+    'min_context_overlap': 2,
+    'banned_phrases': [
+        'je pense que',
+        'il me semble',
+        'probablement',
+        'peut-être',
+        'je crois que',
+        'il est possible que'
+    ],
+    'question_types': {
+        'factuel': {
+            'threshold': 0.8,
+            'keywords': ['combien', 'quand', 'où', 'qui', 'quel', 'quelle']
+        },
+        'opinion': {
+            'threshold': 0.6,
+            'keywords': ['penses-tu', 'crois-tu', 'opinion', 'avis']
+        },
+        'technique': {
+            'threshold': 0.75,
+            'keywords': ['comment', 'explique', 'décris', 'détaille']
+        },
+        'général': {
+            'threshold': 0.65,
+            'keywords': []
+        }
+    }
 } 

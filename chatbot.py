@@ -21,16 +21,21 @@ import psutil
 
 import config
 import utils
+from utils.hallucination_detection import HallucinationDetector
+
+# Initialiser le détecteur d'hallucinations
+hallucination_detector = HallucinationDetector()
 
 # === Fonction de post-traitement anti-hallucination ===
-def post_process_answer(answer, source_documents, detected_lang):
+def post_process_answer(answer, source_documents, detected_lang, question=None):
     """
-    Post-traite la réponse pour détecter et corriger les hallucinations.
+    Post-traite la réponse avec le nouveau système de détection d'hallucinations.
     
     Args:
         answer: La réponse du modèle
         source_documents: Les documents sources
         detected_lang: Langue détectée
+        question: Question originale (optionnelle)
     
     Returns:
         Réponse corrigée
@@ -38,53 +43,56 @@ def post_process_answer(answer, source_documents, detected_lang):
     if not answer or not answer.strip():
         return utils.get_language_message(detected_lang, "fallback")
     
-    answer = answer.strip()
-    
-    # Mots-clés suspects qui indiquent une hallucination
-    hallucination_indicators = {
-        'fr': ['tasse de café', 'café', 'unité', 'je pense que', 'il me semble', 'probablement', 
-               'généralement', 'habituellement', 'typiquement', 'souvent'],
-        'en': ['coffee cup', 'coffee', 'unit', 'i think', 'it seems', 'probably', 
-               'generally', 'usually', 'typically', 'often'],
-        'es': ['taza de café', 'café', 'unidad', 'creo que', 'parece que', 'probablemente'],
-        'de': ['kaffeetasse', 'kaffee', 'einheit', 'ich denke', 'es scheint', 'wahrscheinlich'],
-        'it': ['tazza di caffè', 'caffè', 'unità', 'penso che', 'sembra che', 'probabilmente'],
-        'ar': ['فنجان قهوة', 'قهوة', 'وحدة', 'أعتقد أن', 'يبدو أن', 'ربما']
-    }
-    
-    indicators = hallucination_indicators.get(detected_lang, hallucination_indicators['fr'])
-    
-    # Vérifier si la réponse contient des indicateurs d'hallucination
-    answer_lower = answer.lower()
-    if any(indicator in answer_lower for indicator in indicators):
+    try:
+        # Préparer le contexte à partir des documents sources
+        context = " ".join([doc.page_content for doc in source_documents]) if source_documents else ""
+        
+        # Déterminer le type de question
+        question_type = 'général'
+        if question:
+            question_lower = question.lower()
+            if any(kw in question_lower for kw in ['combien', 'quand', 'où', 'qui']):
+                question_type = 'factuel'
+            elif any(kw in question_lower for kw in ['penses-tu', 'crois-tu', 'opinion']):
+                question_type = 'opinion'
+            elif any(kw in question_lower for kw in ['comment', 'explique', 'décris']):
+                question_type = 'technique'
+        
+        # Valider la réponse
+        validation_result = hallucination_detector.validate_response(
+            answer=answer.strip(),
+            context=context,
+            question=question if question else "",
+            question_type=question_type
+        )
+        
+        # Logger le résultat pour analyse
+        hallucination_detector.log_validation_result(
+            result=validation_result,
+            metadata={
+                'timestamp': dt.datetime.now().isoformat(),
+                'detected_lang': detected_lang,
+                'question_type': question_type
+            }
+        )
+        
+        # Si la réponse n'est pas valide, utiliser la correction suggérée ou le fallback
+        if not validation_result.is_valid:
+            if validation_result.suggested_correction:
+                return validation_result.suggested_correction
+            return utils.get_language_message(detected_lang, "no_info")
+        
+        # Si le score de confiance est faible mais au-dessus du seuil, ajouter une note
+        if validation_result.confidence_score < 0.8:
+            answer = answer.strip()
+            note = utils.get_language_message(detected_lang, "uncertainty_note")
+            return f"{answer}\n\n{note}"
+        
+        return answer.strip()
+        
+    except Exception as e:
+        logger.error(f"Erreur dans post_process_answer: {str(e)}")
         return utils.get_language_message(detected_lang, "fallback")
-    
-    # Vérifier si la réponse est trop générique (pas de termes spécifiques du contexte)
-    if source_documents:
-        context_words = set()
-        for doc in source_documents:
-            # Extraire les mots-clés importants du contexte
-            content_words = doc.page_content.lower().split()
-            # Filtrer les mots significatifs (plus de 4 caractères)
-            significant_words = [word for word in content_words if len(word) > 4]
-            context_words.update(significant_words[:20])  # Top 20 mots du contexte
-        
-        answer_words = set(answer.lower().split())
-        
-        # Vérifier s'il y a un overlap minimum avec le contexte
-        if context_words:
-            overlap = len(answer_words & context_words)
-            if overlap < 2:  # Moins de 2 mots en commun = suspect
-                return utils.get_language_message(detected_lang, "no_info")
-    
-    # Vérifier si la réponse est trop longue (signe d'invention)
-    if len(answer.split()) > 50:  # Plus de 50 mots = suspect
-        # Couper à la première phrase complète
-        sentences = answer.split('.')
-        if sentences:
-            return sentences[0].strip() + '.'
-    
-    return answer
 
 # === Dictionnaire de questions suggérées par thème ===
 QUESTIONS_PAR_THEME = {

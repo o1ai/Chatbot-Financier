@@ -6,7 +6,7 @@ langchain-text-splitters==0.0.1
 
 # Modèle de langage et embeddings
 llama-cpp-python==0.2.38
-sentence-transformers==2.3.1
+sentence-transformers>=2.2.2
 
 # Optimisations
 torch==2.2.1
@@ -23,7 +23,7 @@ streamlit-chat==0.1.1
 plotly==5.18.0
 altair==5.2.0
 pandas==2.1.4
-numpy==1.26.3
+numpy>=1.23.0
 
 # Optimisations d'interface
 watchdog==3.0.0
@@ -54,4 +54,5 @@ psutil==5.9.6
 hf-transfer==0.1.5
 requests==2.31.0
 schedule==1.2.1
-python-dotenv==1.0.0 
+python-dotenv==1.0.0
+scikit-learn>=1.0.2 
