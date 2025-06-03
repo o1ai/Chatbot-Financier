@@ -1,0 +1,9 @@
+{
+    "faithfulness": 0.85,
+    "answer_relevancy": 0.78,
+    "context_precision": 0.72,
+    "context_recall": 0.68,
+    "timestamp": "2025-06-02_11-07-08",
+    "log_file": "logs\\interactions_2025-06-01.jsonl",
+    "sample_size": 12
+}

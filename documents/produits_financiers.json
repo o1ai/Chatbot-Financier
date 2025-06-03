@@ -1,0 +1,115 @@
+{
+    "produits": {
+        "credit_auto": {
+            "nom": "Crédit Automobile",
+            "description": "Financement classique avec propriété du véhicule",
+            "avantages": [
+                "Propriété immédiate du véhicule",
+                "Pas de contrainte kilométrique",
+                "Liberté de revente",
+                "Possibilité de rachat anticipé"
+            ],
+            "conditions": {
+                "apport_minimum": "10%",
+                "duree_minimum": "12 mois",
+                "duree_maximum": "84 mois",
+                "taux": "à partir de 3.99%"
+            },
+            "ideal_pour": [
+                "Particuliers souhaitant devenir propriétaires",
+                "Usage longue durée",
+                "Kilométrage élevé"
+            ]
+        },
+        "loa": {
+            "nom": "Location avec Option d'Achat (LOA)",
+            "description": "Location avec possibilité d'achat en fin de contrat",
+            "avantages": [
+                "Mensualités réduites",
+                "Possibilité d'achat en fin de contrat",
+                "Renouvellement facilité",
+                "Services inclus possibles"
+            ],
+            "conditions": {
+                "apport_minimum": "Premier loyer majoré",
+                "duree_minimum": "24 mois",
+                "duree_maximum": "60 mois",
+                "kilometrage": "limité par contrat"
+            },
+            "ideal_pour": [
+                "Particuliers souhaitant changer régulièrement de véhicule",
+                "Usage modéré",
+                "Budget maîtrisé"
+            ]
+        },
+        "lld": {
+            "nom": "Location Longue Durée (LLD)",
+            "description": "Location sans option d'achat avec services inclus",
+            "avantages": [
+                "Pas d'immobilisation financière",
+                "Services tout compris",
+                "Fiscalité avantageuse",
+                "Budget fixe mensuel"
+            ],
+            "conditions": {
+                "apport_minimum": "Premier loyer majoré optionnel",
+                "duree_minimum": "24 mois",
+                "duree_maximum": "60 mois",
+                "kilometrage": "limité par contrat"
+            },
+            "ideal_pour": [
+                "Professionnels",
+                "Entreprises",
+                "Usage intensif avec besoin de services"
+            ]
+        }
+    },
+    "services_inclus": {
+        "entretien": {
+            "description": "Entretien régulier du véhicule",
+            "disponible_sur": ["loa", "lld"]
+        },
+        "assurance": {
+            "description": "Assurance tous risques",
+            "disponible_sur": ["loa", "lld", "credit_auto"]
+        },
+        "assistance": {
+            "description": "Assistance 24/7",
+            "disponible_sur": ["loa", "lld"]
+        },
+        "vehicule_remplacement": {
+            "description": "Véhicule de remplacement en cas d'immobilisation",
+            "disponible_sur": ["lld"]
+        }
+    },
+    "criteres_selection": {
+        "budget": {
+            "faible": {
+                "solutions_recommandees": ["loa", "lld"],
+                "explication": "Mensualités optimisées sans apport important"
+            },
+            "moyen": {
+                "solutions_recommandees": ["loa", "credit_auto"],
+                "explication": "Bon équilibre entre propriété et mensualités"
+            },
+            "eleve": {
+                "solutions_recommandees": ["credit_auto"],
+                "explication": "Possibilité d'apport conséquent et propriété rapide"
+            }
+        },
+        "usage": {
+            "personnel": {
+                "solutions_recommandees": ["credit_auto", "loa"],
+                "explication": "Flexibilité et possibilité de propriété"
+            },
+            "professionnel": {
+                "solutions_recommandees": ["lld", "loa"],
+                "explication": "Avantages fiscaux et services inclus"
+            },
+            "mixte": {
+                "solutions_recommandees": ["loa"],
+                "explication": "Solution polyvalente adaptée aux deux usages"
+            }
+        }
+    }
+} 

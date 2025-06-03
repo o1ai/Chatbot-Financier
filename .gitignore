@@ -1,0 +1,47 @@
+# Cache et fichiers temporaires
+.cache/
+*.tmp
+*.temp
+
+# Logs
+logs/
+*.log
+
+# Environnement virtuel
+venv/
+env/
+.venv/
+
+# Variables d'environnement
+.env
+.env.local
+
+# Bases de données vectorielles
+chroma_db_bge/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+.coverage
+.pytest_cache/
+
+# Modèles (généralement trop volumineux)
+models/*.gguf
+
+# Évaluations temporaires
+evaluations/temp_*
+visualisations/temp_* 

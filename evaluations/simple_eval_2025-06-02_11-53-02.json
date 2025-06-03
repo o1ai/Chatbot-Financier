@@ -1,0 +1,11 @@
+{
+  "timestamp": "2025-06-02_11-53-02",
+  "dataset_size": 12,
+  "metrics": {
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.46397537647537646,
+    "context_precision": 0.0,
+    "context_recall": 0.0
+  },
+  "evaluation_type": "simple_rag"
+}

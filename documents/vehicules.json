@@ -1,0 +1,38 @@
+{
+    "categories": {
+        "citadine": {
+            "description": "Véhicules compacts pour usage urbain",
+            "budget_recommande": {
+                "min": 15000,
+                "max": 25000
+            }
+        },
+        "berline": {
+            "description": "Véhicules familiaux polyvalents",
+            "budget_recommande": {
+                "min": 25000,
+                "max": 45000
+            }
+        },
+        "suv": {
+            "description": "Véhicules surélevés polyvalents",
+            "budget_recommande": {
+                "min": 30000,
+                "max": 60000
+            }
+        },
+        "premium": {
+            "description": "Véhicules haut de gamme",
+            "budget_recommande": {
+                "min": 50000,
+                "max": 150000
+            }
+        }
+    },
+    "vehicules": {
+        "citadine": [],
+        "berline": [],
+        "suv": [],
+        "premium": []
+    }
+}

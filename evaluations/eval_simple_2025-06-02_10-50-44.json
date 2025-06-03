@@ -1,0 +1,153 @@
+{
+    "timestamp": "2025-06-02_10-50-44",
+    "log_file": "logs\\interactions_2025-06-01.jsonl",
+    "evaluation_type": "simple_algorithmic",
+    "aggregated_metrics": {
+        "answer_relevancy_mean": 0.230725962258712,
+        "answer_relevancy_min": 0.0,
+        "answer_relevancy_max": 0.6359550561797752,
+        "answer_relevancy_std": 0.26583555121537533,
+        "answer_completeness_mean": 0.6297916666666667,
+        "answer_completeness_min": 0.18416666666666667,
+        "answer_completeness_max": 0.8875,
+        "answer_completeness_std": 0.21045231408713383,
+        "context_usage_mean": 0.0,
+        "context_usage_min": 0.0,
+        "context_usage_max": 0.0,
+        "context_usage_std": 0.0,
+        "language_consistency_mean": 0.8666666666666666,
+        "language_consistency_min": 0.3,
+        "language_consistency_max": 1.0,
+        "language_consistency_std": 0.21343747458109497,
+        "global_score_mean": 0.39999903867761355,
+        "global_score_min": 0.21601656626506024,
+        "global_score_max": 0.589899193548387,
+        "global_score_std": 0.1151853061418201,
+        "total_interactions": 12,
+        "avg_response_length": 761.6666666666666,
+        "avg_word_count": 122.75
+    },
+    "detailed_metrics": [
+        {
+            "answer_relevancy": 0.032,
+            "answer_completeness": 0.5725,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 138,
+            "word_count": 21,
+            "global_score": 0.352725,
+            "interaction_id": 0
+        },
+        {
+            "answer_relevancy": 0.009195402298850575,
+            "answer_completeness": 0.8500000000000001,
+            "context_usage": 0.0,
+            "language_consistency": 0.7,
+            "response_length": 785,
+            "word_count": 120,
+            "global_score": 0.3552586206896552,
+            "interaction_id": 1
+        },
+        {
+            "answer_relevancy": 0.00963855421686747,
+            "answer_completeness": 0.6125,
+            "context_usage": 0.0,
+            "language_consistency": 0.3,
+            "response_length": 1006,
+            "word_count": 170,
+            "global_score": 0.21601656626506024,
+            "interaction_id": 2
+        },
+        {
+            "answer_relevancy": 0.007272727272727273,
+            "answer_completeness": 0.8875,
+            "context_usage": 0.0,
+            "language_consistency": 0.7,
+            "response_length": 992,
+            "word_count": 154,
+            "global_score": 0.3640568181818181,
+            "interaction_id": 3
+        },
+        {
+            "answer_relevancy": 0.0,
+            "answer_completeness": 0.23833333333333334,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 49,
+            "word_count": 7,
+            "global_score": 0.25958333333333333,
+            "interaction_id": 4
+        },
+        {
+            "answer_relevancy": 0.6359550561797752,
+            "answer_completeness": 0.6125,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 668,
+            "word_count": 108,
+            "global_score": 0.5439115168539326,
+            "interaction_id": 5
+        },
+        {
+            "answer_relevancy": 0.33043478260869563,
+            "answer_completeness": 0.65,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 679,
+            "word_count": 119,
+            "global_score": 0.46163043478260873,
+            "interaction_id": 6
+        },
+        {
+            "answer_relevancy": 0.45,
+            "answer_completeness": 0.18416666666666667,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 44,
+            "word_count": 10,
+            "global_score": 0.3810416666666667,
+            "interaction_id": 7
+        },
+        {
+            "answer_relevancy": 0.6166666666666667,
+            "answer_completeness": 0.7625,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 1129,
+            "word_count": 172,
+            "global_score": 0.575625,
+            "interaction_id": 8
+        },
+        {
+            "answer_relevancy": 0.032989690721649485,
+            "answer_completeness": 0.725,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 1128,
+            "word_count": 181,
+            "global_score": 0.3911469072164948,
+            "interaction_id": 9
+        },
+        {
+            "answer_relevancy": 0.02197802197802198,
+            "answer_completeness": 0.65,
+            "context_usage": 0.0,
+            "language_consistency": 0.7,
+            "response_length": 1009,
+            "word_count": 147,
+            "global_score": 0.30909340659340656,
+            "interaction_id": 10
+        },
+        {
+            "answer_relevancy": 0.6225806451612903,
+            "answer_completeness": 0.8125,
+            "context_usage": 0.0,
+            "language_consistency": 1.0,
+            "response_length": 1513,
+            "word_count": 264,
+            "global_score": 0.589899193548387,
+            "interaction_id": 11
+        }
+    ],
+    "note": "Évaluation algorithmique sans LLM - gratuite et rapide"
+}

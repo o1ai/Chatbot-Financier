@@ -1,0 +1,76 @@
+{
+  "model": "C:\\Users\\MohamedFKIDITKAANICH\\chatbot_teamwill\\models\\Llama-3.2-3B-Instruct-Q5_K_M.gguf",
+  "config": {
+    "n_ctx": 2048,
+    "n_threads": 6,
+    "temperature": 0.3,
+    "top_p": 0.85,
+    "top_k": 25,
+    "max_tokens": 256,
+    "n_batch": 512,
+    "n_gpu_layers": 0,
+    "repeat_penalty": 1.3,
+    "presence_penalty": 0.5,
+    "frequency_penalty": 0.5
+  },
+  "avg_score": 21.272727272727273,
+  "avg_time": 29.01650071144104,
+  "results": [
+    {
+      "question": "Quelle est la différence entre un Livret A et un PEL ?",
+      "response": "Le Livret A est un compte d'épargne liquide et sans risque avec un taux fixé par l'État (actuellement 3%), plafonné à 22 950€. Le PEL, ou Plan Épargne Logement, permet de préparer le financement immobilier en bloquant votre compte pendant au moins quatre ans.",
+      "score": 36.36363636363637,
+      "matches": [
+        "épargne liquide",
+        "État",
+        "PEL",
+        "épargne logement"
+      ],
+      "total_terms": 11,
+      "time": 51.891454219818115
+    },
+    {
+      "question": "Comment fonctionne un prêt immobilier à taux fixe ?",
+      "response": "Un prêt immobilier à taux fixe est un crédit bancaire où le taux d'intérêt reste constant tout au long de la durée du contrat. Le montant des intérêts versés sera donc prévisible, permettant aux emprunteurs une planification financière plus facile.",
+      "score": 30.0,
+      "matches": [
+        "taux fixe",
+        "durée",
+        "intérêts"
+      ],
+      "total_terms": 10,
+      "time": 20.175052404403687
+    },
+    {
+      "question": "Quels sont les avantages fiscaux d'une assurance vie ?",
+      "response": "Il existe plusieurs avantages fiscaux associés à une assurance vie, notamment : l'impôt sur le revenu (ISU) est exonéré pour les primes versées et la part des bénéfices distribué aux assuré(e)s n'est pas imposée. De plus, en cas de décès du contratier avant son éteignement prévu par convention contractuelle avec l'assureur le capital non réparti entre ses héritiers peut être exonéré d'un impôt sur les successions.",
+      "score": 10.0,
+      "matches": [
+        "succession"
+      ],
+      "total_terms": 10,
+      "time": 35.404175758361816
+    },
+    {
+      "question": "Qu'est-ce qu'un Plan d'Épargne Retraite (PER) ?",
+      "response": "Le Plan d'Épargne Retraite (PER) est un produit de prévision des retraites, qui permet aux salariés et à leurs employeurs de contribuer au financement du système national de sécurité sociale. Il s’agit généralement en compte épargnant avec taux avantageux.",
+      "score": 20.0,
+      "matches": [
+        "retraite",
+        "épargne"
+      ],
+      "total_terms": 10,
+      "time": 22.591696977615356
+    },
+    {
+      "question": "Comment fonctionne le calcul des intérêts d'un livret d'épargne ?",
+      "response": "Le calcul des intérêts d'un Livret A est basé sur le montant déposé et la durée de l'épargne. Les intérêts sont versés au final du terme, avec une frise à 2% par an (sous réserve que les conditions légales soient respectées).",
+      "score": 10.0,
+      "matches": [
+        "calcul"
+      ],
+      "total_terms": 10,
+      "time": 15.020124197006226
+    }
+  ]
+}

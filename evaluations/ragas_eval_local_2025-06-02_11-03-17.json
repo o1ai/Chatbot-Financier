@@ -1,0 +1,11 @@
+{
+    "faithfulness": 0.0,
+    "answer_relevancy": 0.31746031746031744,
+    "answer_completeness": 0.8966666666666666,
+    "evaluation_mode": "local_simple_metrics",
+    "timestamp": "2025-06-02_11-03-17",
+    "log_file": "logs\\interactions_2025-06-01.jsonl",
+    "sample_size": 3,
+    "evaluation_type": "local_model",
+    "note": "Évaluation avec modèle local - pas de quota OpenAI utilisé"
+}

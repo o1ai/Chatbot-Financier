@@ -1,0 +1,57 @@
+# Dépendances principales
+langchain==0.1.12
+langchain-community==0.0.28
+langchain-core==0.1.31
+langchain-text-splitters==0.0.1
+
+# Modèle de langage et embeddings
+llama-cpp-python==0.2.38
+sentence-transformers==2.3.1
+
+# Optimisations
+torch==2.2.1
+peft==0.7.1
+bitsandbytes==0.41.3
+transformers==4.38.2
+
+# Vectorstore
+chromadb==0.4.22
+
+# Interface utilisateur
+streamlit==1.32.0
+streamlit-chat==0.1.1
+plotly==5.18.0
+altair==5.2.0
+pandas==2.1.4
+numpy==1.26.3
+
+# Optimisations d'interface
+watchdog==3.0.0
+streamlit-extras==0.3.5
+
+# Traitement de documents
+PyPDF2==3.0.1
+pypdf==3.17.1
+python-docx==1.0.1
+unstructured==0.11.2
+tabulate==0.9.0
+pdf2image==1.16.3
+pillow==10.2.0
+python-magic==0.4.27
+pytz==2023.3
+
+# Détection de langue
+langdetect==1.0.9
+
+# Calculs et analyses
+tqdm==4.66.1
+
+# API et interactions
+huggingface-hub==0.19.4
+pydantic==2.5.3
+accelerate==0.27.2
+psutil==5.9.6
+hf-transfer==0.1.5
+requests==2.31.0
+schedule==1.2.1
+python-dotenv==1.0.0 
