@@ -528,6 +528,12 @@ def process_user_message(user_message, theme=None):
             
             # Post-traitement de la réponse
             cleaned_response = utils.clean_model_output(response)
+            cleaned_response = post_process_answer(
+                cleaned_response,
+                relevant_docs,
+                detected_lang,
+                question=cleaned_message
+            )
             
             # Vérification de la qualité
             if len(cleaned_response) < config.MIN_RESPONSE_LENGTH:
