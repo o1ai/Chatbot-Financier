@@ -1083,29 +1083,8 @@ def chatbot_interface():
 # === Navigation principale ===
 def main():
     """Interface principale de l'application."""
-    # Vérification des ressources système et auto-configuration
-    if "optimal_config" not in st.session_state:
-        optimal_config = utils.get_optimal_config()
-        st.session_state.optimal_config = optimal_config
-        
-        # Mettre à jour la configuration avec les valeurs optimales
-        if optimal_config:
-            # Mettre à jour la configuration du modèle si nécessaire
-            if 'model_size' in optimal_config:
-                model_path = config.MODELS_DIR / optimal_config['model_size']
-                if model_path.exists():
-                    config.MODEL_CONFIG['model_path'] = str(model_path)
-            
-            # Mettre à jour les autres paramètres
-            for param in ['n_threads', 'n_ctx', 'n_batch']:
-                if param in optimal_config:
-                    config.MODEL_CONFIG[param] = optimal_config[param]
-            
-            # Mettre à jour la configuration du text splitter
-            if 'chunk_size' in optimal_config:
-                config.TEXT_SPLITTER_CONFIG['chunk_size'] = optimal_config['chunk_size']
-            if 'chunk_overlap' in optimal_config:
-                config.TEXT_SPLITTER_CONFIG['chunk_overlap'] = optimal_config['chunk_overlap']
+    # Appliquer automatiquement la configuration optimale au démarrage
+    utils.apply_optimal_config()
     
     # Barre latérale
     st.sidebar.image("img/teamwill.png", width=250)
