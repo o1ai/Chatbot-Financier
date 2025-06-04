@@ -1564,6 +1564,14 @@ def get_fallback_response(question):
     # Réponse générique si aucun produit spécifique n'est trouvé
     return "Je ne peux pas fournir une réponse précise à cette question. Pour obtenir des informations fiables, je vous invite à reformuler votre question ou à contacter directement nos conseillers."
 
+def format_response(response: str, confidence: float) -> str:
+    """Formate la réponse en ajoutant une indication de confiance."""
+    try:
+        confidence_pct = int(confidence * 100)
+        return f"{response}\n\nConfiance: {confidence_pct}%"
+    except Exception:
+        return response
+
 def timeout(seconds):
     """
     Décorateur pour ajouter un timeout aux fonctions.
@@ -1697,15 +1705,23 @@ def process_user_message(user_message, theme=None):
                 else:
                     return f"{produit['description']}\n\nIdéal pour :\n" + "\n".join(produit["ideal_pour"]), [], {"source": "base_produits", "confiance": 1.0}
         
-        # Si ce n'est pas une question spécifique sur un produit, utiliser le traitement normal
-        response, sources = generate_response(cleaned_message, theme)
-        validated_response, confidence = validate_response(response, str(sources), cleaned_message)
+        # Si ce n'est pas une question spécifique sur un produit, utiliser le
+        # traitement normal. La fonction generate_response renvoie uniquement la
+        # réponse, on initialise donc une liste vide pour les sources afin de
+        # maintenir la compatibilité de la sortie.
+        response = generate_response(cleaned_message, theme)
+        sources: List = []
+        validated_response, confidence = validate_response(
+            response,
+            " ".join(sources),
+            cleaned_message,
+        )
         formatted_response = format_response(validated_response, confidence)
-        
+
         return formatted_response, sources, {
             "confiance": confidence,
             "temps_reponse": measure_response_time(),
-            "theme": theme
+            "theme": theme,
         }
         
     except Exception as e:
