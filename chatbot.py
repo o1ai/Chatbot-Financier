@@ -273,32 +273,12 @@ def load_llm():
             memory_used_gb = system_resources['status']['memory_used_gb']
             memory_available_gb = memory_total_gb - memory_used_gb
             
-            model_configs = {
-                'small': {
-                    'name': "Llama-3.2-1B-Instruct-Q5_K_M.gguf",
-                    'min_memory': 4,
-                    'n_ctx': 1024,
-                    'n_batch': 256
-                },
-                'medium': {
-                    'name': "Llama-3.2-3B-Instruct-Q5_K_M.gguf",
-                    'min_memory': 8,
-                    'n_ctx': 2048,
-                    'n_batch': 512
-                },
-                'large': {
-                    'name': "mistral-7b-instruct-v0.2.Q4_0.gguf",
-                    'min_memory': 12,
-                    'n_ctx': 4096,
-                    'n_batch': 1024
-                }
-            }
-            
-            # Sélectionner le modèle approprié
+            # Sélectionner le modèle approprié à partir de la configuration partagée
             selected_config = None
-            for config in ['large', 'medium', 'small']:
-                if memory_available_gb >= model_configs[config]['min_memory']:
-                    selected_config = model_configs[config]
+            for size_key in ['large', 'medium', 'small']:
+                cfg = config.MODEL_CONFIGS[size_key]
+                if memory_available_gb >= cfg['min_memory']:
+                    selected_config = cfg
                     break
             
             if not selected_config:
